@@ -12,11 +12,14 @@ app = FastAPI()
 
 WHITELISTED_IPS = os.getenv("WHITELISTED_IPS", "").split(",")
 
-#
 # extended later to log full tracebacks, report to Sentry, etc.
+# ideas to level this up later:
 # expand it to a logging and/or alerting mechanism
+# Add traceback.print_exc() to log the full stack to file
+# Pipe exceptions to a central logger or even Sentry
+# Auto-tag errors by endpoint, IP, and timestamp
 # if os.getenv("ENV") == "development":
-#
+
 if os.getenv("ENV") == "production":
     @app.exception_handler(Exception)
     async def generic_exception_handler(request: Request, exc: Exception):
@@ -24,6 +27,7 @@ if os.getenv("ENV") == "production":
             status_code=500,
             content={"message": "An internal error occurred. Please try again later."},
         )
+#
 #
 #
 
