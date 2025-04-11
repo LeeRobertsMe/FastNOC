@@ -14,6 +14,7 @@ WHITELISTED_IPS = os.getenv("WHITELISTED_IPS", "").split(",")
 
 #
 # extended later to log full tracebacks, report to Sentry, etc.
+# expand it to a logging and/or alerting mechanism
 # if os.getenv("ENV") == "development":
 #
 if os.getenv("ENV") == "production":
