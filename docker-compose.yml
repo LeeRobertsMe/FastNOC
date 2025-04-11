@@ -1,0 +1,9 @@
+services:
+  fastnoc:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=${PORT}
+      - HOST_URLS=${HOST_URLS}
+      - WHITELISTED_IPS=${WHITELISTED_IPS}
