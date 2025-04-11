@@ -21,7 +21,3 @@ async def metrics(request: Request):
 async def receive_alerts(request: Request):
     payload = await request.json()
     return {"alert": payload}
-
-@router.get("/health")
-async def health_check():
-    return {"status": "ok"}
