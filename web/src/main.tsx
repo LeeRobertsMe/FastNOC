@@ -1,0 +1,1 @@
+import React from "react"; import ReactDOM from "react-dom/client"; import "./index.css"; const App = () => <div>FastNOC UI</div>; ReactDOM.createRoot(document.getElementById("root")).render(<App />);

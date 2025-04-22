@@ -1,9 +1,26 @@
 services:
   fastnoc:
     build: .
-    ports:
-      - "8000:8000"
+    container_name: fastnoc
+    networks:
+      - backend
+    expose:
+      - "8000"  # <-- Expose internally only
     environment:
       - PORT=${PORT}
       - HOST_URLS=${HOST_URLS}
       - WHITELISTED_IPS=${WHITELISTED_IPS}
+
+  fastnoc-dashboard:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: fastnoc-dashboard
+    ports:
+      - "8080:80"
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
